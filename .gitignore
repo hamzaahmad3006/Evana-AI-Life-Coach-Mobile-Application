@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Expo
+.expo/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# NOTE: .env files are NOT ignored because the user explicitly requested to push them.
