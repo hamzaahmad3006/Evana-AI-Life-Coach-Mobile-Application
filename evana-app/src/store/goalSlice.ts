@@ -3,7 +3,7 @@ import { API_ENDPOINTS } from '../constants/config';
 
 export interface Goal {
   id: string;
-  title: str;
+  title: string;
   description?: string;
   category: string;
   target_date: string;

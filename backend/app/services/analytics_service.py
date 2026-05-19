@@ -70,7 +70,7 @@ async def get_user_analytics(user_id: str, days: int = 7) -> AnalyticsSummary:
                 active_goals_count += 1
                 
                 # Dynamic Progress Calculation
-                progress = g.get("progress_percentage", 0)
+                progress = g.get("progress", 0)
                 linked_habit_id = g.get("linked_habit_id")
                 
                 if linked_habit_id:

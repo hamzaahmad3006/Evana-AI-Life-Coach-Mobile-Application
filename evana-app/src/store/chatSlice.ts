@@ -83,16 +83,27 @@ const chatSlice = createSlice({
       })
       // Send Message
       .addCase(sendAssistantMessage.pending, (state, action) => {
-        // Optimistically add user message if we wanted, but here we do it in fulfilled for simplicity
         state.loading = true;
+        // Optimistically add user message
+        if (action.meta?.arg?.message) {
+          state.messages.push({
+            id: 'temp-' + Date.now().toString(),
+            role: 'user',
+            content: action.meta.arg.message,
+          });
+        }
       })
       .addCase(sendAssistantMessage.fulfilled, (state, action) => {
         state.loading = false;
+        // Remove optimistic user message
+        state.messages = state.messages.filter(msg => !msg.id.startsWith('temp-'));
         state.messages.push(action.payload.userMsg);
         state.messages.push(action.payload.aiMsg);
       })
       .addCase(sendAssistantMessage.rejected, (state, action) => {
         state.loading = false;
+        // Remove optimistic user message on error
+        state.messages = state.messages.filter(msg => !msg.id.startsWith('temp-'));
         state.error = action.payload as string;
       });
   },

@@ -48,9 +48,7 @@ async def update_goal(goal_id: str, goal: GoalUpdate):
         if not current_goal.data:
             raise HTTPException(status_code=404, detail="Goal not found")
         
-        old_progress = current_goal.data.get("current_progress", 0)
-        target_value = current_goal.data.get("target_value", 100)
-        old_percentage = (old_progress / target_value) * 100
+        old_percentage = current_goal.data.get("progress", 0)
         user_id = current_goal.data.get("user_id")
 
         # 2. Perform the update
@@ -63,8 +61,7 @@ async def update_goal(goal_id: str, goal: GoalUpdate):
             raise HTTPException(status_code=404, detail="Goal update failed")
         
         updated_goal = result.data[0]
-        new_progress = updated_goal.get("current_progress", old_progress)
-        new_percentage = (new_progress / target_value) * 100
+        new_percentage = updated_goal.get("progress", old_percentage)
 
         # 3. Detect Milestones
         milestones = [25, 50, 75, 100]

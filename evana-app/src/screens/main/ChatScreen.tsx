@@ -136,14 +136,7 @@ export const ChatScreen: React.FC =
             style={[
               styles.header,
               {
-                paddingTop:
-                  Platform.OS ===
-                  'android'
-                    ? (StatusBar.currentHeight ||
-                        0) +
-                      22
-                    : insets.top +
-                      10,
+                paddingTop: 12,
               },
             ]}
           >
@@ -200,26 +193,23 @@ export const ChatScreen: React.FC =
             keyExtractor={(
               item
             ) => item.id}
+            style={styles.chatList}
             showsVerticalScrollIndicator={
               false
             }
             contentContainerStyle={
               styles.chatContent
             }
-            onContentSizeChange={() =>
-              flatListRef.current?.scrollToEnd(
-                {
-                  animated: true,
-                }
-              )
-            }
-            onLayout={() =>
-              flatListRef.current?.scrollToEnd(
-                {
-                  animated: true,
-                }
-              )
-            }
+            onContentSizeChange={() => {
+              setTimeout(() => {
+                flatListRef.current?.scrollToEnd({ animated: true });
+              }, 120);
+            }}
+            onLayout={() => {
+              setTimeout(() => {
+                flatListRef.current?.scrollToEnd({ animated: true });
+              }, 120);
+            }}
             renderItem={({
               item,
             }) => (
@@ -287,13 +277,7 @@ export const ChatScreen: React.FC =
                     </Text>
                   </View>
                 </View>
-              ) : (
-                <View
-                  style={{
-                    height: 140,
-                  }}
-                />
-              )
+              ) : null
             }
           />
 
@@ -432,11 +416,17 @@ const styles = StyleSheet.create({
 
   /* Chat */
 
+  chatList: {
+    flex: 1,
+  },
+
   chatContent: {
     paddingHorizontal:
       SPACING.lg,
 
     paddingTop: 8,
+
+    paddingBottom: 20,
   },
 
   aiRow: {
@@ -518,10 +508,6 @@ const styles = StyleSheet.create({
   /* Input */
 
   inputWrapper: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    bottom: 0,
     paddingHorizontal: 18,
   },
 

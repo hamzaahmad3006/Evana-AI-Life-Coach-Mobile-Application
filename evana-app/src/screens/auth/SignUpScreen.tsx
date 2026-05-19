@@ -143,10 +143,7 @@ const styles = StyleSheet.create({
  scrollContent: {
   flexGrow: 1,
   paddingHorizontal: SPACING.lg,
-  paddingTop:
-    Platform.OS === 'android'
-      ? (StatusBar.currentHeight || 0) + 24
-      : 60,
+  paddingTop: 16,
   paddingBottom: SPACING.xxl,
 },
   header: {

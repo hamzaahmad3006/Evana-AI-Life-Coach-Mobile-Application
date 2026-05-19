@@ -223,9 +223,11 @@ export const OnboardingChatScreen: React.FC = () => {
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.chatContent}
-            onContentSizeChange={() =>
-              flatListRef.current?.scrollToEnd({ animated: true })
-            }
+            onContentSizeChange={() => {
+              setTimeout(() => {
+                flatListRef.current?.scrollToEnd({ animated: true });
+              }, 120);
+            }}
             renderItem={({ item }) => (
               <View style={item.isAI ? styles.aiRow : styles.userRow}>
                 {item.isAI ? (
@@ -340,11 +342,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:
       SPACING.lg,
 
-    paddingTop:
-      Platform.OS === 'android'
-        ? (StatusBar.currentHeight ||
-            0) + 24
-        : 64,
+    paddingTop: 16,
 
     paddingBottom: 22,
   },
@@ -480,12 +478,6 @@ const styles = StyleSheet.create({
   },
 
 inputWrapper: {
-  position: 'absolute',
-
-  left: 0,
-  right: 0,
-  bottom: 0,
-
   paddingHorizontal: 18,
 
   paddingTop: 10,

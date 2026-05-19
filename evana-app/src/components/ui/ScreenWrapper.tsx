@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, StatusBar, ViewStyle } from 'react-native';
+import { StyleSheet, View, SafeAreaView, StatusBar, ViewStyle, Platform } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../../constants/theme';
 
@@ -14,7 +14,7 @@ export const ScreenWrapper: React.FC<ScreenWrapperProps> = ({ children, style })
       colors={[COLORS.bgGradStart, COLORS.bgGradEnd]}
       style={styles.container}
     >
-      <StatusBar barStyle="dark-content" />
+      <StatusBar barStyle="dark-content" translucent backgroundColor="transparent" />
       <SafeAreaView style={[styles.safeArea, style]}>
         {children}
       </SafeAreaView>
@@ -28,5 +28,6 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex: 1,
+    paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight || 24) : 0,
   },
 });

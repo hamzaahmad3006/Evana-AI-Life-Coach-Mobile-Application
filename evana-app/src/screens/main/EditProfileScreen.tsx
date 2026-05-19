@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     paddingHorizontal: SPACING.lg,
-    paddingTop: SPACING.xl,
+    paddingTop: 16,
     paddingBottom: 100,
   },
   avatarContainer: {

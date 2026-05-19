@@ -8,7 +8,7 @@
 // ================================================
 
 // Your laptop's Wi-Fi IPv4 address (found via `ipconfig`)
-const LOCAL_IP = '172.50.100.249';
+const LOCAL_IP = '172.50.100.233';
 
 // Backend server port (must match uvicorn --port)
 const PORT = 8000;

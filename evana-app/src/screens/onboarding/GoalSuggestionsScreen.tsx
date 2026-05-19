@@ -459,12 +459,7 @@ const styles = StyleSheet.create({
     paddingHorizontal:
       SPACING.lg,
 
-    paddingTop:
-      Platform.OS ===
-      'android'
-        ? (StatusBar.currentHeight ||
-            0) + 36
-        : 72,
+    paddingTop: 16,
 
     paddingBottom: 52,
   },

@@ -27,7 +27,7 @@ import {
   Target,
   ChevronRight,
   Sparkles,
-  Calendar,
+  User,
 } from 'lucide-react-native';
 
 import { VoiceInterface } from './VoiceInterface';
@@ -47,7 +47,7 @@ export const HomeScreen: React.FC = () => {
         contentContainerStyle={[
           styles.scrollContent,
           {
-            paddingTop: insets.top + 12,
+            paddingTop: 12,
             paddingBottom: insets.bottom + 120,
           },
         ]}
@@ -94,7 +94,7 @@ export const HomeScreen: React.FC = () => {
           {/* Large Card */}
           <View style={styles.largeCard}>
             <View style={styles.iconBox}>
-              <Target
+              <User
                 size={20}
                 color={COLORS.purple}
               />
@@ -183,40 +183,7 @@ export const HomeScreen: React.FC = () => {
               />
             </TouchableOpacity>
 
-            <TouchableOpacity
-              activeOpacity={0.8}
-              style={styles.smallCard}
-              onPress={() => dispatch(setMainScreen('habits'))}
-            >
-              <View style={styles.smallCardContent}>
-                <View
-                  style={[
-                    styles.smallIconBox,
-                    {
-                      backgroundColor: '#E1F5EE',
-                    },
-                  ]}
-                >
-                  <Calendar
-                    size={14}
-                    color={COLORS.success}
-                  />
-                </View>
 
-                <Text style={styles.smallCardTitle}>
-                  Habits
-                </Text>
-
-                <Text style={styles.smallCardSub}>
-                  Consistency
-                </Text>
-              </View>
-
-              <ChevronRight
-                size={18}
-                color={COLORS.success}
-              />
-            </TouchableOpacity>
           </View>
         </View>
 
@@ -423,7 +390,7 @@ const styles = StyleSheet.create({
   largeCard: {
     flex: 1,
     backgroundColor: COLORS.cardBg,
-    borderRadius: RADIUS.md,
+    borderRadius: 28,
     padding: 18,
     borderWidth: 1,
     borderColor: COLORS.cardBorder,
@@ -455,7 +422,7 @@ const styles = StyleSheet.create({
 
   cardBtn: {
     paddingVertical: 12,
-    borderRadius: 14,
+    borderRadius: 30,
   },
 
   cardBtnText: {
@@ -469,10 +436,11 @@ const styles = StyleSheet.create({
   },
 
   smallCard: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: COLORS.cardBg,
-    borderRadius: RADIUS.sm,
+    borderRadius: 24,
     padding: 14,
     borderWidth: 1,
     borderColor: COLORS.cardBorder,

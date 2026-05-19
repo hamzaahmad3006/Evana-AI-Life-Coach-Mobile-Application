@@ -179,7 +179,7 @@ export const SettingsScreen: React.FC = () => {
 const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: SPACING.lg,
-    paddingTop: SPACING.xl,
+    paddingTop: 16,
   },
   profileCard: {
     flexDirection: 'row',
