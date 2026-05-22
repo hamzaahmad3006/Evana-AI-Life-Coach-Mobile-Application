@@ -14,7 +14,7 @@ const LOCAL_IP = '172.50.100.233';
 const PORT = 8000;
 
 // The base URL your app will use for all API calls
-export const API_URL = `http://${LOCAL_IP}:${PORT}`;
+export const API_URL = process.env.EXPO_PUBLIC_API_URL || `http://${LOCAL_IP}:${PORT}`;
 
 // Convenience export for common endpoints
 export const API_ENDPOINTS = {
