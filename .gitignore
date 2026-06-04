@@ -18,3 +18,4 @@ __pycache__/
 Thumbs.db
 
 # NOTE: .env files are NOT ignored because the user explicitly requested to push them.
+backend/.env
